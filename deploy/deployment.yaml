@@ -19,20 +19,8 @@ env:
     app: accounts
 spec:
   containers:
-  - image: us.icr.io/on-labs-clueking2/accounts:1
+  - image: IMAGE_NAME_HERE
   name: accounts
   resources {}
 
-  envy:
-  - name: DATABASE_HOST
-    value: postgresql
-  - name: DATABASE_NAME
-  valuefrom:
-    SecretKeyRef:
-      name: postgresql
-      key: database-password
-  - name: DATABASE_USER
-    valuefrom:
-      secretKeyRef:
-        name: postgresql
-        key: database-user
+

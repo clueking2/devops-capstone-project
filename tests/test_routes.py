@@ -31,7 +31,6 @@ class TestAccountService(TestCase):
     @classmethod
     def setUpClass(cls):
       """Run once before all tests"""
-    talisman.force_https = False
 
     @classmethod
     def tearDownClass(cls):

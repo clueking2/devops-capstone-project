@@ -79,6 +79,7 @@ def list_accounts():
 ######################################################################
 # READ AN ACCOUNT
 ######################################################################
+
 @app.route("/accounts/<int:account_id>", methods=["GET"])
 def get_accounts(account_id):
     """
@@ -144,6 +145,6 @@ def check_content_type(media_type):
         return
     app.logger.error("Invalid Content-Type: %s", content_type)
     abort(
-    status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
-    f"Content-Type must be {media_type}",
+        status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+        f"Content-Type must be {media_type}",
     )

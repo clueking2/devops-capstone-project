@@ -1,4 +1,28 @@
-env:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: accounts
+  name: accounts
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: accounts
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: accounts
+    spec:
+      containers:
+      - image: us.icr.io/sn-labs-claireluekin/accounts:1
+        name: accounts
+        resources: {}
+
+        env:
           - name: DATABASE_HOST
             value: postgresql
           - name: DATABASE_NAME
@@ -16,11 +40,5 @@ env:
               secretKeyRef:
                 name: postgresql
                 key: database-user
-    app: accounts
-spec:
-  containers:
-  - image: IMAGE_NAME_HERE
-  name: accounts
-  resources {}
 
 

@@ -38,7 +38,7 @@ spec:
         - init
       - name: lint
       workspaces:
-        - name: source
+      - name: source
           workspace: pipeline-workspace
       taskRef:
         name: flake8

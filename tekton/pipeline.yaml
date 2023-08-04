@@ -15,6 +15,7 @@ spec:
     - name: repo-url
     - name: branch
       default: main
+    - name: build-image
   tasks:
     - name: init
       workspaces:
@@ -36,9 +37,10 @@ spec:
         value: $(params.branch)
       runAfter:
         - init
-      - name: lint
+
+    - name: lint
       workspaces:
-      - name: source
+        - name: source
           workspace: pipeline-workspace
       taskRef:
         name: flake8
@@ -50,7 +52,7 @@ spec:
       runAfter:
         - clone
 
-- name: tests
+    - name: tests
       workspaces:
         - name: source
           workspace: pipeline-workspace
@@ -63,11 +65,6 @@ spec:
         value: "-v --with-spec --spec-color"
       runAfter:
         - clone
-
-spec:
-  params:
-    ... other parameters ...
-    - name: build-image
 
     - name: build
       workspaces:
@@ -83,7 +80,7 @@ spec:
         - tests
         - lint
 
- - name: deploy
+    - name: deploy
       workspaces:
         - name: manifest-dir
           workspace: pipeline-workspace
